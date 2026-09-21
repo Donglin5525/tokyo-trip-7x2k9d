@@ -183,6 +183,11 @@ a:hover { text-decoration: underline; }
 }
 .details.closed { display: none; }
 
+/* ── Changelog bubble ── */
+.chg-badge { display:inline-flex; align-items:center; justify-content:center; height:18px; padding:0 6px; border-radius:9px; background:#fff3c4; color:#8a6d00; font-size:10px; font-weight:700; cursor:pointer; border:none; -webkit-tap-highlight-color: transparent; }
+.chg-box { margin-top:8px; padding:8px 10px; background:#fffbea; border:1px solid #f1e3a3; border-radius:8px; font-size:12px; color:#6b5900; line-height:1.6; }
+.chg-box.closed { display:none; }
+
 .day-list .card { margin-bottom: 8px; }
 .day-list .card .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
 
@@ -251,7 +256,7 @@ const DAYS = [
       pay: { card: 1, alipay: 1, wechat: 1 }, gmap: 'UNIQLO+Ginza' },
     { name: '东京塔 · 赤羽桥机位', lat: 35.6586, lng: 139.7474, type: 'spot', time: '15:15',
       desc: '清单里的「东京塔拍照打卡」：赤羽桥路口是全东京最经典的塔机位（塔+路灯+绿地同框）。银座地铁过来约 20 分钟，拍 30-40 分钟收工。',
-      detail: '拍完 16:20 从赤羽桥站出发（三田线到大手町，约 25 分钟到集合点），17:15 集合刚好；万一逛超时，赤羽桥→丸之内打车约 ¥1,500、10 分钟兜底。今天下午节奏稍紧，银座别恋战；傍晚敞篷巴士还会再经过塔一次。',
+      detail: '拍完 16:20 从赤羽桥站出发（三田线到大手町，约 25 分钟到集合点），17:15 集合刚好；万一逛超时，赤羽桥→丸之内打车约 ¥1,500、10 分钟兜底。今天下午节奏稍紧，银座别恋战；傍晚敞篷巴士还会再经过塔一次。', chg: '📝 9/21 地陪审查后新增打车兜底：本卡 16:20 离开→17:15 集合的衔接原本零容错，加一条地铁迟到时的 Plan B（¥1,500、10 分钟直达）。',
       gmap: 'Tokyo+Tower+Akabanebashi' },
     { name: 'Sky Bus 东京 · 东京塔彩虹大桥线', lat: 35.6795, lng: 139.7625, type: 'transport', time: '17:15',
       desc: '⏰ 已购票（2 成人）：17:15 丸之内乘车点集合，17:30-18:20 发车。敞篷双层观光巴士，途经东京塔、彩虹大桥、台场方向海上高架。',
@@ -271,14 +276,14 @@ const DAYS = [
       gmap: 'Yoyogi+Park' },
     { name: 'Fuglen Tokyo（原宿）', lat: 35.6713, lng: 139.6933, type: 'drink', time: '11:30',
       desc: '清单点位「世界第一咖啡」，已确认就是这家：奥斯陆来的传奇咖啡馆，被全球咖啡圈称为「世界最好喝的咖啡」。复古家具+手冲，公园步行 8 分钟。',
-      budget: '¥1,000/人', detail: '浅草还有 % Arabica（见 D5）是同榜单常客，顺路想喝再加一杯。',
+      budget: '¥1,000/人', detail: '浅草还有 % Arabica（见 D5）是同榜单常客，顺路想喝再加一杯。', chg: '📝 9/21 你确认「世界第一咖啡」= Fuglen，措辞已从「双候选」改为确定项；浅草 % Arabica 降为顺路加杯位。',
       pay: { card: 1 }, gmap: 'Fuglen+Tokyo' },
     { name: '原宿竹下通', lat: 35.6714, lng: 139.7035, type: 'spot', time: '12:15',
       desc: '东京最「青春」的窄街：糖果色小店+可丽饼，和表参道一街之隔两种画风。快速逛 20 分钟打卡即可。',
       gmap: 'Takeshita+Street' },
     { name: '表参道 · 榉树大道 + 后巷午餐', lat: 35.6463, lng: 139.7101, type: 'food', time: '12:45',
       desc: '先拍榉树大道和旗舰店建筑（Prada 青山、Omotesando Hills），午餐钻主干道背后的 back street——街拍咖啡+小馆最密集地带，点「大众点评」就近选。',
-      budget: '人均 ¥2,000', detail: '⏰ 硬性时间点：14:30 必须动身去涩谷（地铁 2 站+八公像打卡+找入口安检）——SHIBUYA SKY 15:20-15:39 窗口过期作废，是全行程唯一的死线。逛上头了宁可少逛一条街。',
+      budget: '人均 ¥2,000', detail: '⏰ 硬性时间点：14:30 必须动身去涩谷（地铁 2 站+八公像打卡+找入口安检）——SHIBUYA SKY 15:20-15:39 窗口过期作废，是全行程唯一的死线。逛上头了宁可少逛一条街。', chg: '📝 9/21 地陪审查后新增此死线指令：SHIBUYA SKY 票 15:39 后作废且无解，表参道购物最易失控，故把「几点必须走」写死在这里。',
       pay: { cash: 0.5, card: 1 }, gmap: 'Omotesando' },
     { name: '地铁到涩谷 · 忠犬八公像', lat: 35.6585, lng: 139.7015, type: 'spot', time: '15:00',
       desc: '表参道→涩谷地铁 2 站。八公像+十字路口地面打卡（人潮经典机位）。' },
@@ -334,7 +339,7 @@ const DAYS = [
       desc: '河畔远景晴空塔+朝日啤酒大楼，和服照第二场景。拍完回店还和服（半日租约 13:30-14:00 归还）。' },
     { name: '% Arabica 浅草', lat: 35.7140, lng: 139.7950, type: 'drink', time: '14:15',
       desc: '全球最佳咖啡馆榜常客（「世界第一」已确认给 D3 的 Fuglen，这家是顺路加杯位）。还完和服顺路，想喝就喝。',
-      budget: '¥800/人', pay: { card: 1 }, gmap: '%25+Arabica+Asakusa' },
+      budget: '¥800/人', pay: { card: 1 }, gmap: '%25+Arabica+Asakusa', chg: '📝 9/21 「世界第一」头衔确认给 Fuglen（D3），本卡由「双候选之一」降为顺路可选。' },
     { name: '东京晴空塔', lat: 35.7101, lng: 139.8107, type: 'spot', time: '15:00',
       desc: '634m 世界最高塔之一，350m 展望台天气好可远眺富士山——如果 10/2 没看够，这里补一刀。塔下 Solamachi 商场适合带手信。',
       budget: '展望台 ¥2,100 起', detail: '建议官网提前购日期票免排队；周末现场票可能等 30-60 分钟。',
@@ -373,7 +378,7 @@ const DAYS = [
       pay: { cash: 1 }, gmap: 'Omoide+Yokocho' },
     { name: '都厅展望台夜景（可选）', lat: 35.6895, lng: 139.6919, type: 'spot', time: '—',
       desc: '可选收尾，以早休优先：45 层免费夜景（晴日可见富士山剪影），横丁步行 10 分钟。明天 05:45 出发去机场，今晚体力好再上。',
-      budget: '免费', detail: '开放至 22:00（最后入场约 21:30），1 楼乘专用电梯。不去的话 20:00 前回酒店，明早更从容。',
+      budget: '免费', detail: '开放至 22:00（最后入场约 21:30），1 楼乘专用电梯。不去的话 20:00 前回酒店，明早更从容。', chg: '📝 9/21 地陪审查后由「必去」降为「可选」：原排 20:30 看夜景，但明早 05:45 出发去机场只睡 5 小时；夜景常在，红眼航班没觉睡是真遭罪。',
       pay: { }, gmap: 'Tokyo+Metropolitan+Government+Building' }
   ]},
   { id: 7, label: 'D7 回程', date: '10月5日 周一', title: '返程', color: '#8e8e93', locations: [
@@ -402,6 +407,10 @@ function overviewContent() {
 <div class="section-head">已购门票（邮箱二维码随身存）</div>
 <div class="pay-summary"><h4>✅ Sky Bus 东京</h4>9/30（周三）<b>17:15</b> 丸之内乘车点集合，17:30-18:20 东京塔·彩虹大桥线 · 2 成人<br><span class="warn">出发前核对：邮箱二维码 / 集合点 / 天气取消规则</span></div>
 <div class="pay-summary"><h4>✅ SHIBUYA SKY</h4>10/1（周四）入场窗口 <b>15:20-15:39</b>，过期作废勿迟到 · 2 成人<br><span class="ok-text">策略：看日落（约17:15）+夜景连场</span></div>
+<div class="section-head">📝 更新日志（最新在上）</div>
+<div class="pay-summary"><h4>9/21 · 地陪审查修补 + Fuglen 确认（本轮）</h4>页面上带 <span class="chg-badge" style="pointer-events:none">📝改</span> 气泡的卡片 = 本轮改动点，点气泡看说明。本轮共 5 处：<br>· Fuglen 确认为「世界第一咖啡」（你拍板），% Arabica 降为顺路<br>· D3 午餐卡新增 <b>14:30 死线指令</b>——保护 SHIBUYA SKY 票（15:39 后作废）<br>· D2 东京塔卡新增<b>打车兜底</b>（集合衔接原为零容错）<br>· D6 都厅夜景降为<b>可选</b>（原排 20:30，与明早 05:45 赶飞机冲突，睡眠优先）</div>
+<div class="pay-summary"><h4>9/21 · 愿望清单融合 + 富士山改跟团</h4>· 清单 13 项全部融入对应日期（见下方清单核对）<br>· 镰仓未排，理由和换日方案见下方说明卡<br>· 富士山由「富士回游自由行」改为<b>跟团大巴一日游</b>（你拍板）<br>· teamLab 标记待定（你研究中）；底图换 Esri（支持双击打开）；修正下北泽坐标偏差 2.1km</div>
+<div class="pay-summary"><h4>9/21 · 初版</h4>· 7 天行程框架 + 两张已购票锚点（Sky Bus 9/30、SHIBUYA SKY 10/1）+ 餐厅咖啡候选 + 富士山时机分析</div>
 <div class="section-head">出发前要办的事</div>
 <div class="pay-summary"><h4>⏰ 两件要办 + 一件待定</h4>1. <b>富士山巴士一日游</b>：Klook/KKday 订 10/2 团（选含大石公园、雨天可退），<span class="warn">9/26 前后看天气最终定档</span><br>2. <b>浅草和服</b>：预约 10/3 周六 8:30-9:00 档（选带妆发套餐）<br>3. ⏳ <b>teamLab</b>：东林研究中，查完说订不订（不去也不影响其他行程）</div>
 <div class="pay-summary"><h4>🗻 富士山日 · 看天吃饭</h4>优先 10/2 周五（避开周末人流）。若下雨与 10/3 浅草日互换；两天都雨则改市内。彩蛋：9月底-10月初是富士山「初冠雪」窗口，可能撞见山体戴第一圈白帽。</div>
@@ -559,7 +568,9 @@ function locCard(loc, dayIdx) {
     lnk += `<a href="${dpHref}" onclick="return openDp('${locKey.replace(/'/g,"\\'")}')" class="btn dp">${dpLabel}</a>`;
   }
   if(loc.reserve) lnk += `<a href="${loc.reserve}" target="_blank" class="btn rsv">📅 预约</a>`;
-  return `<div class="tl-item"><div class="tl-dot ${dot}"></div><div class="card" onclick="if(!event.target.closest('.btn,.links'))toggle('${uid}')"><div class="time">${loc.time!=='—'?loc.time:'备选'}</div><div class="name">${bdg} ${loc.name}</div><div class="desc">${loc.desc}</div>${loc.budget?'<div class="budget">'+loc.budget+'</div>':''}${payChips(loc.pay)}<div class="links">${lnk}</div>${loc.detail?'<div class="details closed" id="'+uid+'">'+loc.detail.replace(/\n/g,'<br>')+'</div>':''}</div></div>`;
+  const chgBadge = loc.chg ? `<button class="chg-badge" onclick="event.stopPropagation();toggle('chg-${uid}')" title="改动说明">📝改</button>` : '';
+  const chgBox = loc.chg ? `<div class="chg-box closed" id="chg-${uid}">${loc.chg}</div>` : '';
+  return `<div class="tl-item"><div class="tl-dot ${dot}"></div><div class="card" onclick="if(!event.target.closest('.btn,.links'))toggle('${uid}')"><div class="time">${loc.time!=='—'?loc.time:'备选'}</div><div class="name">${bdg} ${loc.name}${chgBadge}</div><div class="desc">${loc.desc}</div>${loc.budget?'<div class="budget">'+loc.budget+'</div>':''}${payChips(loc.pay)}<div class="links">${lnk}</div>${chgBox}${loc.detail?'<div class="details closed" id="'+uid+'">'+loc.detail.replace(/\n/g,'<br>')+'</div>':''}</div></div>`;
 }
 
 function renderDay(idx) {
