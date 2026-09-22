@@ -227,7 +227,10 @@ a:hover { text-decoration: underline; }
     position: sticky; top: 0;
     margin-left: 46vw;
     background: rgba(255,255,255,.95);
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
   }
+  .tab { padding: 7px 13px; font-size: 13px; }
   .content {
     margin-left: 46vw;
     max-width: 780px;
@@ -493,6 +496,7 @@ function overviewContent() {
 <div class="pay-summary"><h4>✅ Sky Bus 东京</h4>9/30（周三）<b>17:15</b> 丸之内乘车点集合，17:30-18:20 东京塔·彩虹大桥线 · 2 成人<br><span class="warn">出发前核对：邮箱二维码 / 集合点 / 天气取消规则</span></div>
 <div class="pay-summary"><h4>✅ SHIBUYA SKY</h4>10/1（周四）入场窗口 <b>15:20-15:39</b>，过期作废勿迟到 · 2 成人<br><span class="ok-text">策略：看日落（约17:15）+夜景连场</span></div>
 <div class="section-head">📝 更新日志（最新在上）</div>
+<div class="pay-summary"><h4>9/23 · 四轮：验收修补（3 处小修）</h4>· 切换日期后页面滚回顶部（原来只归零了内容区、没作用到实际滚动，双栏下「地图动了、文字不动」易误解）<br>· 桌面端标签栏缩小一档 + 右缘渐隐提示（1180 宽度下 D7 被截半无提示）<br>· 愿望清单 Ginza Sand 行文案同步为「晚 20:00 外带宵夜」</div>
 <div class="pay-summary"><h4>9/23 · 三轮：营业时间核实结果（子 agent 实查 Tabelog/官网）</h4>· <b>Ginza Sand 周三上午不营业</b>（17:00-凌晨 4:00 的夜间店型）——从上午加餐位挪到 <b>D2 晚饭后 20:00 外带宵夜</b>：现做 15-20 分钟、保质期 2 小时，买回酒店吃刚好；⚠️ 它只收 PayPay，出发前装好<br>· NEEL：每天 9:30-20:30 无定休 → D3 周四 17:30 ✅<br>· 蓝瓶中目黑：周日 8:00-19:00 → 17:15 ✅（19:00 打烊，别拖）<br>· AFURI 惠比寿：11:00-次日 5:00 全年无休 → 18:15 ✅（18 个吧台位或小排）<br>· GINZA SIX 恢复 12:00（上午空档还给购物）</div>
 <div class="pay-summary"><h4>9/23 · 二轮：电脑 / iPad 端适配（东林反馈看着费劲）</h4>· <b>≥900px 宽（电脑、iPad 横屏）自动切换「左地图 + 右行程」双栏</b>：地图固定占左侧 46%、行程在右侧独立滚动，不再被顶部大地图挤占视野；导航弹窗改为屏幕居中<br>· 620-899px（iPad 竖屏）内容栏加宽至 760px，行距更舒展<br>· <b>手机端（&lt;620px）保持原样、一字未动</b><br>· 窗口缩放/横竖屏旋转时地图自动重算尺寸，不会错位留白</div>
 <div class="pay-summary"><h4>9/23 · 三处微调（东林拍板）</h4>· <b>D1 晚新增歌舞伎町可选项</b>：红眼航班当晚以精力为准，放弃零损失；D4 晚有同款，二选一<br>· <b>D2 新增 Ginza Sand.（銀座サンド）和牛三明治</b>：11:50 插在优衣库与 GINZA SIX 之间当购物加餐，两人分食防吃撑；⏳ 精确坐标与周三营业核实中<br>· <b>NEEL 从 D6 调到 D3</b>：涩谷 Sky 下来东横线 2 站顺路（周四工作日营业比周日稳）；D6 晚只剩蓝瓶（17:15）+AFURI（18:15）<br>· <b>新宿御苑「见缝插针」结论</b>：常规日程塞不下（D3 有死线、D5 赶不到闭园、各晚间太晚），放进富士山天气备用的市内日当主锚点——只有 10/2 因雨砍掉富士山时登场（卡片挂在 D4 备选区）</div>
@@ -507,7 +511,7 @@ function overviewContent() {
 <div class="pay-summary"><h4>⏰ 两件要办</h4>1. <b>富士山巴士一日游</b>：Klook/KKday 订 10/2 团（选含大石公园、雨天可退），<span class="warn">9/26 前后看天气最终定档</span><br>2. <b>浅草和服</b>：预约 10/3 周六 8:30-9:00 档（选带妆发套餐）<br><span style="text-decoration:line-through;color:var(--text-tertiary)">3. teamLab</span> <span style="color:var(--text-tertiary)">9/22 研究后决定不去，已移除</span></div>
 <div class="pay-summary"><h4>🗻 富士山 + 镰仓 · 两个远郊日共用一套天气决策（9/26 执行）</h4>看河口湖+镰仓两地预报，把富士山（10/2）和镰仓（10/4）放到天气更好的组合里：富士山那天烂→与镰仓日互换；两天都烂→砍远郊、10/2 恢复市内慢逛日。彩蛋不变：9月底-10月初是富士山「初冠雪」窗口，可能撞见山体戴第一圈白帽。</div>
 <div class="section-head">愿望清单 · 融合结果</div>
-<div class="pay-summary"><h4>📋 已全部融入行程（9/22 晚全局调整后）</h4>✅ AFURI 阿夫利 → D6 晚餐（镰仓回程顺路惠比寿本店）<br>✅ 松屋 → D1 午餐顺路（九段下有店）<br>✅ 浅草和服 → D5 上午已排<br>✅ 代代木公园 → D3 上午（神宫北门直达）<br>✅ 下北泽 → D3 晚餐<br>✅ 镰仓一日游 → D6 整天（大佛+江之电+八幡宫）<br>✅ 唐吉诃德 → D4 晚 新宿东口（提前两天买更稳）<br>✅ 歌舞伎町+哥斯拉头 → D4 晚<br>✅ 烧鸟+朝日生啤 → D4 晚 思出横丁<br>✅ 中目黑 NEEL 梨咖啡 → D3 晚（涩谷 Sky 下来顺路，周四营业稳）<br>✅ 蓝瓶 → D6 晚 中目黑川店<br>✅ 世界第一咖啡 Fuglen → D3 上午（已确认）；% Arabica 浅草顺路可选<br>✅ 东京塔打卡 → D2 赤羽桥机位（敞篷巴士上再路过一次）<br>✅ Ginza Sand. 和牛三明治 → D2 上午购物加餐（9/23 新增）<br>➖ teamLab → 9/22 你研究后决定不去，已移除</div>
+<div class="pay-summary"><h4>📋 已全部融入行程（9/22 晚全局调整后）</h4>✅ AFURI 阿夫利 → D6 晚餐（镰仓回程顺路惠比寿本店）<br>✅ 松屋 → D1 午餐顺路（九段下有店）<br>✅ 浅草和服 → D5 上午已排<br>✅ 代代木公园 → D3 上午（神宫北门直达）<br>✅ 下北泽 → D3 晚餐<br>✅ 镰仓一日游 → D6 整天（大佛+江之电+八幡宫）<br>✅ 唐吉诃德 → D4 晚 新宿东口（提前两天买更稳）<br>✅ 歌舞伎町+哥斯拉头 → D4 晚<br>✅ 烧鸟+朝日生啤 → D4 晚 思出横丁<br>✅ 中目黑 NEEL 梨咖啡 → D3 晚（涩谷 Sky 下来顺路，周四营业稳）<br>✅ 蓝瓶 → D6 晚 中目黑川店<br>✅ 世界第一咖啡 Fuglen → D3 上午（已确认）；% Arabica 浅草顺路可选<br>✅ 东京塔打卡 → D2 赤羽桥机位（敞篷巴士上再路过一次）<br>✅ Ginza Sand. 和牛三明治 → D2 晚 20:00 外带宵夜（周三 17:00 才开门，上午不营业）<br>➖ teamLab → 9/22 你研究后决定不去，已移除</div>
 <div class="pay-summary"><h4>✅ 镰仓一日游 · 已排入 D6（9/22 晚全局调整）</h4>teamLab 决定不去后腾出 10/4，镰仓按「要么不去、去了就玩透」排整天：大佛+长谷寺（赶早避周日人潮）→江之电+鸟居机位→小町通しらす丼→鹤冈八幡宫；回程火车恰好停中目黑，蓝瓶/AFURI 顺路落地（NEEL 已调至 D3），一分路不绕。原 D6 新宿内容整体迁至 D4 晚（烧鸟+采购+歌舞伎町一站式）。</div>
 <div class="section-head">支付提醒</div>
 <div class="pay-summary"><h4>💴 现金 <span class="warn">必带 3-5 万日元/两人</span></h4>仲见世小店、神社御守、思出横丁、河口湖多以现金为主；大商场/便利店刷卡及支付宝微信均可。</div>
@@ -693,7 +697,7 @@ function go(idx) {
   tabsEl.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', +t.dataset.day===idx));
   contentEl.innerHTML = idx===0 ? overviewContent() : renderDay(idx);
   showDay(idx);
-  contentEl.scrollTo({top:0});
+  window.scrollTo({top:0});
   const tab = tabsEl.querySelector(`[data-day="${idx}"]`);
   if(tab) tab.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
 }
