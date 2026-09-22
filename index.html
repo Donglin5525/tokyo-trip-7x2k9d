@@ -207,6 +207,45 @@ a:hover { text-decoration: underline; }
 .leaflet-control-zoom a { width: 34px !important; height: 34px !important; line-height: 34px !important; font-size: 16px !important; border-radius: 10px !important; background: rgba(255,255,255,.85) !important; -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important; border: .5px solid var(--separator) !important; color: var(--text-primary) !important; }
 .leaflet-control-zoom { border-radius: 12px !important; overflow: hidden; box-shadow: var(--shadow-md) !important; border: none !important; }
 .leaflet-control-attribution { font-size: 9px !important; opacity: .5; }
+
+/* ═══════════════════════════════════════════
+   Responsive — desktop / iPad adaptation
+   ═══════════════════════════════════════════ */
+/* iPad 竖屏及小平板（620-899px）：保持上下结构，内容栏加宽 */
+@media (min-width: 620px) and (max-width: 899px) {
+  .content { max-width: 760px; }
+  .hero { padding-top: 36px; }
+}
+/* 电脑 / iPad 横屏（≥900px）：左地图右行程双栏 */
+@media (min-width: 900px) {
+  #map {
+    position: fixed; left: 0; top: 0; bottom: 0;
+    width: 46vw; height: 100vh; min-height: 0;
+    z-index: 1;
+  }
+  .tabs {
+    position: sticky; top: 0;
+    margin-left: 46vw;
+    background: rgba(255,255,255,.95);
+  }
+  .content {
+    margin-left: 46vw;
+    max-width: 780px;
+    padding-left: 36px; padding-right: 36px;
+    padding-bottom: 48px;
+  }
+  .hero { padding-top: 52px; padding-bottom: 24px; }
+  .hero h1 { font-size: 34px; }
+  .hero .subtitle { font-size: 18px; }
+  .card .name { font-size: 18px; }
+  .as-overlay { align-items: center; }
+  .as-sheet {
+    max-width: 400px; padding: 10px;
+    border-radius: 18px;
+    transform: none; opacity: 0; transition: opacity .2s;
+  }
+  .as-overlay.show .as-sheet { transform: none; opacity: 1; }
+}
 </style>
 </head>
 <body>
@@ -454,6 +493,7 @@ function overviewContent() {
 <div class="pay-summary"><h4>✅ Sky Bus 东京</h4>9/30（周三）<b>17:15</b> 丸之内乘车点集合，17:30-18:20 东京塔·彩虹大桥线 · 2 成人<br><span class="warn">出发前核对：邮箱二维码 / 集合点 / 天气取消规则</span></div>
 <div class="pay-summary"><h4>✅ SHIBUYA SKY</h4>10/1（周四）入场窗口 <b>15:20-15:39</b>，过期作废勿迟到 · 2 成人<br><span class="ok-text">策略：看日落（约17:15）+夜景连场</span></div>
 <div class="section-head">📝 更新日志（最新在上）</div>
+<div class="pay-summary"><h4>9/23 · 二轮：电脑 / iPad 端适配（东林反馈看着费劲）</h4>· <b>≥900px 宽（电脑、iPad 横屏）自动切换「左地图 + 右行程」双栏</b>：地图固定占左侧 46%、行程在右侧独立滚动，不再被顶部大地图挤占视野；导航弹窗改为屏幕居中<br>· 620-899px（iPad 竖屏）内容栏加宽至 760px，行距更舒展<br>· <b>手机端（&lt;620px）保持原样、一字未动</b><br>· 窗口缩放/横竖屏旋转时地图自动重算尺寸，不会错位留白</div>
 <div class="pay-summary"><h4>9/23 · 三处微调（东林拍板）</h4>· <b>D1 晚新增歌舞伎町可选项</b>：红眼航班当晚以精力为准，放弃零损失；D4 晚有同款，二选一<br>· <b>D2 新增 Ginza Sand.（銀座サンド）和牛三明治</b>：11:50 插在优衣库与 GINZA SIX 之间当购物加餐，两人分食防吃撑；⏳ 精确坐标与周三营业核实中<br>· <b>NEEL 从 D6 调到 D3</b>：涩谷 Sky 下来东横线 2 站顺路（周四工作日营业比周日稳）；D6 晚只剩蓝瓶（17:15）+AFURI（18:15）<br>· <b>新宿御苑「见缝插针」结论</b>：常规日程塞不下（D3 有死线、D5 赶不到闭园、各晚间太晚），放进富士山天气备用的市内日当主锚点——只有 10/2 因雨砍掉富士山时登场（卡片挂在 D4 备选区）</div>
 <div class="pay-summary"><h4>9/22 晚 · 全局调整：teamLab 取消，镰仓进场 + MUJI 动线优化（东林拍板）</h4>· <b>D6（10/4 周日）整日改为镰仓</b>：大佛+长谷寺→江之电鸟居机位→小町通しらす丼→八幡宫；回程火车恰好停中目黑，NEEL/蓝瓶/AFURI 顺路收尾<br>· 原 D6 内容分流：烧鸟+朝日、唐吉诃德、歌舞伎町 → <b>D4 晚「新宿之夜」</b>；AFURI → D6 晚餐；新宿御苑、都厅夜景 → 删除（D4 晚不能熬夜因 D5 早起拍空景，D6 晚要赶回城）<br>· <b>D2 动线再优化</b>：MUJI 从 10:00 开场位移到 14:00 末位 + 新增 15:05 回酒店卸货窗口——解决「一早买了最重的货拎 7 小时」的痛点；和光回归 10:00 拍照开场<br>· 天气决策升级：富士山与镰仓两个远郊日共用 9/26 看天定档<br>· ⏳ 待核实：NEEL/蓝瓶/AFURI 周日晚间营业时间（核实后如需调整会出新气泡）</div>
 <div class="pay-summary"><h4>9/22 · Tsurutontan 乌冬排入 D3 午餐（东林点名）</h4>· 结论：<b>放 D3（涩谷日）而非 D2（银座日）</b>——查证发现涩谷店与 SHIBUYA SKY 同栋楼（Scramble Square 13F），吃完上楼等入场，全行程唯一死线（15:20 窗口）风险最低；且 D3 午餐位原本是无落地店的泛推荐、D3 又是体力最重的一天（热乌冬补碳水）<br>· 涩谷店 ★3.38 / 午市 ¥1,000-2,000 / 不接纯占座预约需现场排队（等位=楼内逛，零通勤）；周四营业无忧<br>· 银座店（★3.46，午市随到随吃）已写进 D2 午餐卡备选池，想改随时可换<br>· 原「表参道午餐 + 14:30 死线指令」随之化解，表参道段改为纯逛街</div>
@@ -483,6 +523,7 @@ function overviewContent() {
 const map = L.map('map', { center: [HOTEL.lat || 35.69, HOTEL.lng || 139.74], zoom: 12, zoomControl: false, attributionControl: true });
 L.control.zoom({ position: 'topright' }).addTo(map);
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: 'Tiles &copy; Esri &middot; &copy; OpenStreetMap contributors' }).addTo(map);
+window.addEventListener('resize', () => { map.invalidateSize(); });
 
 const LocateControl = L.Control.extend({
   options: { position: 'bottomright' },
